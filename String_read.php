@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 // drop table
 $sql2 = "DROP TABLE str_key";
 if ($conn->query($sql2) === TRUE) {
-    echo "Table str_key droped successfully";
+    //echo "Table str_key droped successfully";
 } else {
     echo "Error dropping table: " . $conn->error;
 }
@@ -33,7 +33,7 @@ password varchar(20)
 )";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Table str_key created successfully";
+    //echo "Table str_key created successfully";
 } else {
     echo "Error creating table: " . $conn->error;
 }
@@ -75,7 +75,7 @@ try {
 	VALUES ('$val1','$val2')";
 	// use exec because no results are returned
 	$conn->exec($sql);
-	echo "New record created successfully";
+	//echo "New record created successfully";
 	}
 	
 catch(PDOException $e) {
@@ -83,6 +83,30 @@ catch(PDOException $e) {
 	}
 $conn = null;
 }
+
+
+
+// Table read and printing password and username
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT id, username, password FROM str_key";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo   $row["id"]. ".    " . $row["username"]. "    " . $row["password"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
 
  ?>
 </body>
