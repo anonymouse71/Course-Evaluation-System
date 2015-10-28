@@ -2,9 +2,9 @@
 
 function random_string() {
 	$character_set_array = array();
-	$character_set_array[] = array('count' => 7, 'characters' => 'abcdefghijklmnopqrstuvwxyz');
-	$character_set_array[] = array('count' => 7, 'characters' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-	$character_set_array[] = array('count' => 6, 'characters' => '0123456789');
+	$character_set_array[] = array('count' => 3, 'characters' => 'abcdefghijklmnopqrstuvwxyz');
+	$character_set_array[] = array('count' => 3, 'characters' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+	$character_set_array[] = array('count' => 2, 'characters' => '0123456789');
 
 	$temp_array = array();
 	foreach ($character_set_array as $character_set) {
