@@ -98,10 +98,13 @@ if ($conn->connect_error) {
 $sql = "SELECT id, username, password FROM str_key";
 $result = $conn->query($sql);
 
+echo "<p style='text-decoration:underline'><b>Serial</b> &nbsp;&nbsp; <b>Username</b> &nbsp; &nbsp;<b>Password</b> </p>";
+
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo   $row["id"]. ".    " . $row["username"]. "    " . $row["password"]. "<br>";
+        echo   $row["id"]. ".   &nbsp; &nbsp; &nbsp;  " . $row["username"]. "  &nbsp; &nbsp; &nbsp;   " . $row["password"]. "<br><br>";
+    
     }
 } else {
     echo "0 results";
