@@ -32,7 +32,7 @@ function check_input($username,$password)
     $spassword = "";
     $dbname = "evaluation";
 
-	//create connection
+	//create connection Abu Hanife Nayem 2012331073
     $conn = new mysqli($servername, $susername, $spassword, $dbname);
   
     // Check connection
