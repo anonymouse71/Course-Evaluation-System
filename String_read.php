@@ -22,7 +22,7 @@ $sql2 = "DROP TABLE str_key";
 if ($conn->query($sql2) === TRUE) {
     //echo "Table str_key droped successfully";
 } else {
-    echo "Error dropping table: " . $conn->error;
+    //echo "Error dropping table: " . $conn->error;
 }
 
 // sql to create table
