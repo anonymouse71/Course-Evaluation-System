@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Generated Strings</title>
+	<title>Generated PassKeys</title>
 </head>
 <body>
 <?php 
@@ -11,38 +11,37 @@ $password = "";
 $dbname = "evaluation";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+
+try {
+	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$sql1 = "DROP TABLE str_key";
+	$conn->exec($sql1);
 } 
+catch(PDOException $e) {
+	echo $sql1 . "<br>" . $e->getMessage();
+	}
 
-// drop table
-$sql2 = "DROP TABLE str_key";
-if ($conn->query($sql2) === TRUE) {
-    //echo "Table str_key droped successfully"; #Abu Hanife Nayem 2012331073
-} else {
-    //echo "Error dropping table: " . $conn->error; #Abu Hanife Nayem 2012331073
-}
+try {
+	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
-// sql to create table
-$sql = "CREATE TABLE str_key (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-key_uniq varchar(20),
-is_used INT(6)
-)";
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$sql2 = "CREATE TABLE str_key (
+			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+			key_uniq varchar(20),
+			is_used INT(6)
+			)";
 
-if ($conn->query($sql) === TRUE) {
-    //echo "Table str_key created successfully";
-} else {
-    echo "Error creating table: " . $conn->error;
-}
-
-$conn->close();
+	$conn->exec($sql2);
+} 
+catch(PDOException $e) {
+	echo $sql2 . "<br>" . $e->getMessage();
+	}
 
 //posted string no
 
-$count_string=$_POST["pass_number"];
+$count_string=$_POST["pass_amount"];
 
 //string genarate  #Abu Hanife Nayem 2012331073
 
@@ -62,7 +61,7 @@ function random_string() {
 	return implode('', $temp_array);
 	
 }
-for($i=0; $i<$count_string; $i++){
+for($i=0; $i<$count_string; $i++) {
 
 $val =random_string();
 
@@ -71,32 +70,29 @@ try {
 	// set PDO error mode to exeption 
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
-	$sql = "INSERT INTO str_key (key_uniq, is_used)
+	$sql3 = "INSERT INTO str_key (key_uniq, is_used)
 	VALUES ('$val','0')";
 	// use exec because no results are returned
-	$conn->exec($sql);
+	$conn->exec($sql3);
 	//echo "New record created successfully";  #Abu Hanife Nayem 2012331073
 	}
 	
 catch(PDOException $e) {
-	echo $sql . "<br>" . $e->getMessage();
+	echo $sql3 . "<br>" . $e->getMessage();
 	}
 $conn = null;
 }
-
-
 
 // Table read and printing password and username
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-$sql = "SELECT id, key_uniq FROM str_key";
-$result = $conn->query($sql);
+$sql4 = "SELECT id, key_uniq FROM str_key";
+$result = $conn->query($sql4);
 
 echo "<p style='text-decoration:underline'><b>Serial</b> &nbsp;&nbsp; <b>Pass_key</b></p><br>";
 

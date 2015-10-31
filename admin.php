@@ -4,14 +4,13 @@
 	<title>Admin Panel</title>
 </head>
 <body>
-<h1><center>Admin Panel</center></h1>
+<h4>Amount of password you want to Generate</h4>
 <center><form action="String_read.php" method="post">
-Total username/password:
 <br>
 <br>
-<input type="number" name="pass_number"><br>
+<input type="number" name="pass_amount"><br>
 <br>
-<input type="submit" value="create">
+<input type="submit" value="Generate">
 </form>
 </center>
 </body>
