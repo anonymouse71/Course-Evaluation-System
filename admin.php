@@ -1,7 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION[$myusername]) ){
+if(isset($_SESSION['myusername']) ){
 	header('location:login.php');
+} else {
+	echo " Welcome ";
 }
 ?>
 <!DOCTYPE html>
