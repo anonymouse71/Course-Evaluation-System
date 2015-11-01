@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!session_is_registered(myusername)){
+	header('location:login.php');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,5 +19,7 @@
 <input type="submit" value="Generate">
 </form>
 </center>
+
+<a href="logout.php">Logout</a>
 </body>
 </html>
