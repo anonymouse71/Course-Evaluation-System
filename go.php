@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $flag=check_input($password);
 
    if($flag == 1){
-   	header( "refresh:0;url=Under_construction.php" );
+   	header("location:http://www.google.com/forms");
    }
 }
 
