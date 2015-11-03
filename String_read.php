@@ -5,6 +5,9 @@
 </head>
 <body>
 <?php 
+
+$admin_name=$_SESSION['myusername'];
+
 $servername = "localhost";
 $username = "root";
 $password = "";

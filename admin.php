@@ -1,10 +1,11 @@
 <?php
 session_start();
-if(isset($_SESSION['myusername']) ){
+if(!isset($_SESSION['myusername']) ){
 	header('location:login.php');
 } else {
 	echo "<center> Welcome </center>";
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,6 +22,8 @@ if(isset($_SESSION['myusername']) ){
 <input type="submit" value="Generate">
 </form>
 </center>
+<br>
+<br><br>
 <a href="another_user.php"><center>Add another user</center></a>
 <br><br>
 <a href="logout.php"><center>Logout</center></a>

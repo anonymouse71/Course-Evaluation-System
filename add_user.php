@@ -1,7 +1,7 @@
 <?php
 
-$username=$_POST["username"];
-$password=$_POST["password"];
+$admin_name=$_POST["admin_name"];
+$admin_pass=$_POST["admin_pass"];
 $form_link=$_POST["form_link"];
 
 
@@ -15,7 +15,9 @@ try {
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	$sql = "INSERT INTO admin (username, password, form_link)
-	VALUES ('$username','$password','$form_link')";
+	VALUES ('$admin_name','$admin_pass','$form_link')";
+	$conn->exec($sql);
+	header('location:login.php');
 } 
 catch(PDOException $e) {
 	echo $sql . "<br>" . $e->getMessage();
