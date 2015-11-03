@@ -4,6 +4,8 @@
 	<title>Creating another user</title>
 </head>
 <body>
+ 
+ <!--It is only for form input of new user-->
 
 <center>
 <form action="add_user.php" method="post">

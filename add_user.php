@@ -1,5 +1,7 @@
 <?php
 
+//this is for the entry of the user in database
+
 $admin_name=$_POST["admin_name"];
 $admin_pass=$_POST["admin_pass"];
 $form_link=$_POST["form_link"];
@@ -17,7 +19,7 @@ try {
 	$sql = "INSERT INTO admin (username, password, form_link)
 	VALUES ('$admin_name','$admin_pass','$form_link')";
 	$conn->exec($sql);
-	header('location:login.php');
+	header('location:admin.php');
 } 
 catch(PDOException $e) {
 	echo $sql . "<br>" . $e->getMessage();
