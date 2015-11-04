@@ -1,10 +1,11 @@
 <?php
 session_start();
-if(isset($_SESSION['myusername']) ){
+if(!isset($_SESSION['myusername']) ){
 	header('location:login.php');
 } else {
-	echo " Welcome ";
+	echo "<center> Welcome </center>";
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,16 +13,19 @@ if(isset($_SESSION['myusername']) ){
 	<title>Admin Panel</title>
 </head>
 <body>
-<h4>Amount of password you want to Generate</h4>
-<center><form action="String_read.php" method="post">
 <br>
+<h4><center>Amount of password you want to Generate</center></h4>
+<center><form action="String_read.php" method="post">
 <br>
 <input type="number" name="pass_amount"><br>
 <br>
 <input type="submit" value="Generate">
 </form>
 </center>
-
-<a href="logout.php">Logout</a>
+<br>
+<br><br>
+<a href="another_user.php"><center>Add another user</center></a>
+<br><br>
+<a href="logout.php"><center>Logout</center></a>
 </body>
 </html>

@@ -5,6 +5,11 @@
 </head>
 <body>
 <?php 
+
+session_start();
+$admin_name=$_SESSION['myusername'];
+
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -16,18 +21,18 @@ try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql1 = "DROP TABLE str_key";
+	$sql1 = "DROP TABLE ".$admin_name;
 	$conn->exec($sql1);
 } 
 catch(PDOException $e) {
-	echo $sql1 . "<br>" . $e->getMessage();
+	//echo $sql1 . "<br>" . $e->getMessage();
 	}
 
 try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql2 = "CREATE TABLE str_key (
+	$sql2 = "CREATE TABLE `".$admin_name."`(
 			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 			key_uniq varchar(20),
 			is_used INT(6)
@@ -70,7 +75,7 @@ try {
 	// set PDO error mode to exeption 
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
-	$sql3 = "INSERT INTO str_key (key_uniq, is_used)
+	$sql3 = "INSERT INTO`".$admin_name."` (key_uniq, is_used)
 	VALUES ('$val','0')";
 	// use exec because no results are returned
 	$conn->exec($sql3);
@@ -91,7 +96,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql4 = "SELECT id, key_uniq FROM str_key";
+$sql4 = "SELECT id, key_uniq FROM`".$admin_name."`";
 $result = $conn->query($sql4);
 
 echo "<p style='text-decoration:underline'><b>Serial</b> &nbsp;&nbsp; <b>Pass_key</b></p><br>";
