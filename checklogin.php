@@ -27,6 +27,7 @@ $count=mysql_num_rows($result);
 if($count>=1){
 
 // Register $myusername, $mypassword and redirect to file "admin.php"
+	//Developed by: Md Abu Hanife Nayem & Masiur rahman siddiki
 session_start();
 $_SESSION['myusername'] = $myusername;
 $_SESSION['mypassword'] = $mypassword;
