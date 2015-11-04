@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $flag=check_input($password);
 
    if($flag == 1){
-   	header("location:http://www.google.com/forms");
+   	header("location:http://goo.gl/forms/O0GS07fmOl");
    }
 }
 
