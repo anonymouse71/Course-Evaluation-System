@@ -1,5 +1,5 @@
 <?php
-
+/*
 function random_string() {
 	$character_set_array = array();
 	$character_set_array[] = array('count' => 3, 'characters' => 'abcdefghijklmnopqrstuvwxyz');

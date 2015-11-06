@@ -1,5 +1,7 @@
 <?php
-
+session_start();
+if(!isset($_SESSION['myusername']) ){
+	header('location:login.php');
 //this is for the entry of the user in database
 
 $admin_name=$_POST["admin_name"];
