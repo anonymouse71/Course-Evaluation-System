@@ -3,9 +3,9 @@ session_start();
 if(!isset($_SESSION['myusername']) ){
 	header('location:login.php');
 } else {
-	echo "<center> Welcome </center>";
+	echo "<center> Welcome ". $_SESSION['myusername'] . "</center>";
 }
-  //Developed by: Md Abu Hanife Nayem & Masiur rahman siddiki
+  //Developed by: Md Abu Hanife Nayem & Masiur Rahman Siddiki
 ?>
 <!DOCTYPE html>
 <html>
