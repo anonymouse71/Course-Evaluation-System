@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['myusername']) ){
 	header('location:login.php');
 } else {
-	echo "<center> Welcome ". $_SESSION['myusername'] . "</center>";
+	echo "<center> Welcome ". $_SESSION['myusername'] . "</center>" ;
 }
   //Developed by: Md Abu Hanife Nayem & Masiur Rahman Siddiki
 ?>
@@ -16,12 +16,13 @@ if(!isset($_SESSION['myusername']) ){
 </head>
 <body>
 <br>
-<h4><center>Amount of password you want to Generate</center></h4>
-<center><form action="String_read.php" method="post">
+<h4><center>Admin Only</center></h4>
+<center><form action="generate.php" method="post">
 <br>
-<input type="number" name="pass_amount"><br>
+Form Link: <input type="text" name="form_link"><br>
+Number of Token: <input type="number" name="pass_amount"><br>
 <br>
-<input type="submit" value="Generate">
+<input type="submit" value="Generate Token">
 </form>
 </center>
 <br>

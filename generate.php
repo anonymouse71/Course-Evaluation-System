@@ -13,45 +13,31 @@ session_start();
 if(!isset($_SESSION['myusername']) ){
 	header('location:login.php');
 }
-$admin_name=$_SESSION['myusername'];
-$course=$_POST['course'];
+$link=$_POST['form_link'];
 
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "evaluation";
-
-// Create connection
-
+/*	
 try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql1 = "DROP TABLE ".$course;
+$sql1 = "CREATE TABLE tokens (
+			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+			token varchar(20),
+			is_used INT(6),
+			link text
+			)";
+
 	$conn->exec($sql1);
 } 
 catch(PDOException $e) {
 	echo $sql1 . "<br>" . $e->getMessage();
 	}
-
-try {
-	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-
-	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql2 = "CREATE TABLE `".$course."`(
-			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-			key_uniq varchar(20),
-			is_used INT(6),
-			Course_No varchar(20)
-			)";
-
-	$conn->exec($sql2);
-} 
-catch(PDOException $e) {
-	echo $sql2 . "<br>" . $e->getMessage();
-	}
-
-//posted string no
+*/
+//get string amount
 
 $count_string=$_POST["pass_amount"];
 
@@ -82,8 +68,8 @@ try {
 	// set PDO error mode to exeption 
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
-	$sql3 = "INSERT INTO`".$course."` (key_uniq, is_used, Course_No)
-	VALUES ('$val','0', '".$course."')";
+	$sql3 = "INSERT INTO tokens (token, is_used, link)
+	VALUES ('$val','0', '$link')";
 	// use exec because no results are returned
 	$conn->exec($sql3);
 	//echo "New record created successfully";  #Abu Hanife Nayem 2012331073
@@ -98,25 +84,28 @@ $conn = null;
 // Table read and printing password and username
 
 // Create connection
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql4 = "SELECT * FROM`".$course."`";
+$sql4 = "SELECT id, token FROM tokens";
 $result = $conn->query($sql4);
 
-echo "<p style='text-decoration:underline'><b>Serial</b> &nbsp;&nbsp; <b>Pass_key</b></p><br>";
+echo "<p><b>Serial</b> &nbsp;&nbsp;&nbsp; <b>Pass_key</b></p>";
 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo   $row["id"]. ".   &nbsp; &nbsp; &nbsp;  " . $row["key_uniq"].  " &nbsp; &nbsp; &nbsp; ".$row['Course_No']. " <br><br>";
+        echo   $row["id"]. ".   &nbsp; &nbsp; &nbsp;  " . $row["token"].  "<br><br>";
     
     }
 } else {
     echo "0 results";
 }
+
+
 ?>
 
 <button onclick="myFunction()">Print this page</button>
