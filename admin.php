@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['myusername']) ){
 	header('location:login.php');
 } else {
-	echo "<center> Welcome ". $_SESSION['myusername'] . "</center>" ;
+	//echo "<center> Welcome ". $_SESSION['myusername'] . "</center>" ;
 }
   //Developed by: Md Abu Hanife Nayem & Masiur Rahman Siddiki
 ?>
@@ -16,20 +16,28 @@ if(!isset($_SESSION['myusername']) ){
 </head>
 <body>
 <div class="container">
-  <div class="jumbotron">
-  <h1>SUST CSE Course Evolution</h1> 
-<h4><center>Admin Only</center></h4>
+  <!--It is for heading only-->
+
+  <div class="well well-lg">
+  <h2>SUST CSE Course Evolution</h2>
+  <h4>Admin only</h4>
 </div>
-<center><form action="generate.php" method="post">
+
+<center><?php echo "<h3> Welcome ". $_SESSION['myusername']." </h3>"; ?></center>
+
+<form action="generate.php" method="post">
 <br>
-Form Link: <input type="text" name="form_link"><br><br>
-Number of Token: <input type="number" name="pass_amount"><br>
+<br><h4>Genarate some token:</h4><br>
+
+<?php echo " &nbsp &nbsp &nbsp &nbsp Form Link: &nbsp &nbsp &nbsp&nbsp&nbsp"; ?> <input type="text" name="form_link"><br><br>
+<?php  echo"&nbsp &nbsp &nbsp &nbsp" ?> Token amount: <input type="number" name="pass_amount"><br>
 <br>
-<input type="submit" value="Generate Token">
+ <?php echo"&nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp" ?>
+<input type="submit" value="Generate">
 </form>
-</center>
 <br>
 <br><br>
+
 <a href="another_user.php"><center>Add another user</center></a>
 <br><br>
 <a href="logout.php"><center>Logout</center></a>
