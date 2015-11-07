@@ -15,11 +15,14 @@ if(!isset($_SESSION['myusername']) ){
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<br>
+<div class="container">
+  <div class="jumbotron">
+  <h1>SUST CSE Course Evolution</h1> 
 <h4><center>Admin Only</center></h4>
+</div>
 <center><form action="generate.php" method="post">
 <br>
-Form Link: <input type="text" name="form_link"><br>
+Form Link: <input type="text" name="form_link"><br><br>
 Number of Token: <input type="number" name="pass_amount"><br>
 <br>
 <input type="submit" value="Generate Token">
@@ -30,5 +33,6 @@ Number of Token: <input type="number" name="pass_amount"><br>
 <a href="another_user.php"><center>Add another user</center></a>
 <br><br>
 <a href="logout.php"><center>Logout</center></a>
+</div>
 </body>
 </html>
