@@ -6,8 +6,7 @@
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-</body>
-</html>
+
 <?php 
 
 session_start();
@@ -15,9 +14,7 @@ if(!isset($_SESSION['myusername']) ){
 	header('location:login.php');
 }
 $admin_name=$_SESSION['myusername'];
-$id=$_SESSION['id'];
-echo $id;
-
+$course=$_POST['course'];
 
 $servername = "localhost";
 $username = "root";
@@ -30,7 +27,7 @@ try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql1 = "DROP TABLE ".$admin_name;
+	$sql1 = "DROP TABLE ".$course;
 	$conn->exec($sql1);
 } 
 catch(PDOException $e) {
@@ -41,14 +38,11 @@ try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql2 = "CREATE TABLE `".$admin_name."`(
+	$sql2 = "CREATE TABLE `".$course."`(
 			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 			key_uniq varchar(20),
 			is_used INT(6),
-			".$admin_name."_id INT(4),
-			FOREIGN KEY (".$admin_name."_id)
-				REFERENCES admin (id)
-				On DELETE CASCADE
+			Course_No varchar(20)
 			)";
 
 	$conn->exec($sql2);
@@ -88,8 +82,8 @@ try {
 	// set PDO error mode to exeption 
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
-	$sql3 = "INSERT INTO`".$admin_name."` (key_uniq, is_used, ".$admin_name."_id)
-	VALUES ('$val','0', '".$id."')";
+	$sql3 = "INSERT INTO`".$course."` (key_uniq, is_used, Course_No)
+	VALUES ('$val','0', '".$course."')";
 	// use exec because no results are returned
 	$conn->exec($sql3);
 	//echo "New record created successfully";  #Abu Hanife Nayem 2012331073
@@ -109,7 +103,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql4 = "SELECT id, key_uniq FROM`".$admin_name."`";
+$sql4 = "SELECT * FROM`".$course."`";
 $result = $conn->query($sql4);
 
 echo "<p style='text-decoration:underline'><b>Serial</b> &nbsp;&nbsp; <b>Pass_key</b></p><br>";
@@ -117,10 +111,21 @@ echo "<p style='text-decoration:underline'><b>Serial</b> &nbsp;&nbsp; <b>Pass_ke
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo   $row["id"]. ".   &nbsp; &nbsp; &nbsp;  " . $row["key_uniq"]."<br><br>";
+        echo   $row["id"]. ".   &nbsp; &nbsp; &nbsp;  " . $row["key_uniq"].  " &nbsp; &nbsp; &nbsp; ".$row['Course_No']. " <br><br>";
     
     }
 } else {
     echo "0 results";
 }
 ?>
+
+<button onclick="myFunction()">Print this page</button>
+
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
+
+</body>
+</html>
