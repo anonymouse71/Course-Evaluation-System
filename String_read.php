@@ -4,12 +4,17 @@
 	<title>Generated PassKeys</title>
 </head>
 <body>
+</body>
+</html>
 <?php 
 
 session_start();
 if(!isset($_SESSION['myusername']) ){
 	header('location:login.php');
+}
 $admin_name=$_SESSION['myusername'];
+$id=$_SESSION['id'];
+echo $id;
 
 
 $servername = "localhost";
@@ -27,7 +32,7 @@ try {
 	$conn->exec($sql1);
 } 
 catch(PDOException $e) {
-	//echo $sql1 . "<br>" . $e->getMessage();
+	echo $sql1 . "<br>" . $e->getMessage();
 	}
 
 try {
@@ -37,7 +42,11 @@ try {
 	$sql2 = "CREATE TABLE `".$admin_name."`(
 			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 			key_uniq varchar(20),
-			is_used INT(6)
+			is_used INT(6),
+			".$admin_name."_id INT(4),
+			FOREIGN KEY (".$admin_name."_id)
+				REFERENCES admin (id)
+				On DELETE CASCADE
 			)";
 
 	$conn->exec($sql2);
@@ -77,8 +86,8 @@ try {
 	// set PDO error mode to exeption 
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
-	$sql3 = "INSERT INTO`".$admin_name."` (key_uniq, is_used)
-	VALUES ('$val','0')";
+	$sql3 = "INSERT INTO`".$admin_name."` (key_uniq, is_used, ".$admin_name."_id)
+	VALUES ('$val','0', '".$id."')";
 	// use exec because no results are returned
 	$conn->exec($sql3);
 	//echo "New record created successfully";  #Abu Hanife Nayem 2012331073
@@ -112,8 +121,4 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-
-
- ?>
-</body>
-</html>
+?>
