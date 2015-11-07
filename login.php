@@ -2,11 +2,17 @@
 <html>
 <head>
 	<title>Admin Login</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h2>Login </h2>
+    <div class="container">
+  <div class="jumbotron">
+    <h1>SUST CSE Course Evolution</h1> 
+    <h2>Admin Login</h2>
+  </div>
 	<form action="checklogin.php" method="post">
-		  
+		  <br><br>
 		  <input type="text" name="username" placeholder="Username">
 		  <br>
 		  <br>
@@ -14,5 +20,6 @@
 		  <br><br>
 		  <input type="submit" value="Submit">
 	</form>
+	</div>
 </body>
 </html>
