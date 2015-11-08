@@ -16,7 +16,7 @@ try {
 	$sql = "INSERT INTO admin (username, password)
 	VALUES ('$admin_name','$admin_pass')";
 	$conn->exec($sql);
-	header('location:login.php');
+	header('location:user_added.php');
 } 
 catch(PDOException $e) {
 	echo $sql . "<br>" . $e->getMessage();
@@ -24,3 +24,4 @@ catch(PDOException $e) {
 
 //Developed by: Md Abu Hanife Nayem & Masiur rahman siddiki
  ?>
+
