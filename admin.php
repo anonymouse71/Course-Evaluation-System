@@ -16,34 +16,45 @@ if(!isset($_SESSION['myusername']) ){
 </head>
 <body>
 <div class="container">
-  <!--It is for heading only-->
 
   <div class="well well-lg">
-  <h2>SUST CSE Course Evolution</h2>
-  <h4>Admin only</h4>
+	  <h2 style="text-align:center">Course Evaluation System</h2>
+	  <h4 style="text-align:center">Admin access only</h4>
 
-</div>
+  </div>
 
-<center><?php echo "<h3> Welcome ". $_SESSION['myusername']." </h3>"; ?></center>
-<a href="logout.php"><center>Logout</center></a>
+<center><?php echo "<h3> Welcome, <strong>". $_SESSION['myusername']."</strong> </h3>"; ?></center>
+<a href="logout.php"><button class="btn btn-info">Logout</button></a>
+<a href="another_user.php"><button class="btn btn-info">Add another user</button></a>
 
-<form action="generate.php" method="post">
-<br>
-
-<br><h4>Genarate some token:</h4><br>
-
-<?php echo " &nbsp &nbsp &nbsp &nbsp Form Link: &nbsp &nbsp &nbsp&nbsp&nbsp"; ?> <input type="text" name="form_link"><br><br>
-
-<?php  echo"&nbsp &nbsp &nbsp &nbsp" ?> Token amount: <input type="number" name="pass_amount"><br>
-<br>
- <?php echo"&nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp" ?>
-<input type="submit" value="Generate">
-</form>
-
-<br>
+<h3 style="text-align:center">Genarate token for particular link</h3>
 <br><br>
+<div class="col-md-6 col-md-offset-3">
+  <form class="form-horizontal" action="generate.php" method="POST">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="form_link">http://</label>
+          <div class="col-sm-8">
+            <input type="text" name="form_link" class="form-control" placeholder="Enter your google form's link" required>
+            <p>without http:// e.g: www.google.com 
+          </div>
+      </div>
 
-<a href="another_user.php"><center>Add another user</center></a>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pass_amount">Amount:</label>
+          <div class="col-sm-8">
+            <input type="number" name="pass_amount" class="form-control" placeholder="Enter amount of token you want to generate" required>
+          </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="col-sm-offset-2 col-xs-4">
+          <button type="submit" class="btn btn-primary">Generate</button>
+        </div>
+      </div>
+  </form>
+ </div>
+
+
 <br><br>
 
 </div>
