@@ -19,7 +19,8 @@ if(!isset($_SESSION['myusername']) ){
 	  <h4 style="text-align:center">Admin access only</h4>
 
   </div> 
-
+<br>
+<br>
 <div class="col-md-6 col-md-offset-3">
 <form class="form-horizontal" action="add_user.php" method="post">
 	<div class="form-group">
