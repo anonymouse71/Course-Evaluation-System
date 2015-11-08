@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if(!isset($_SESSION['myusername']) ){
 	header('location:login.php');
@@ -13,17 +12,40 @@ if(!isset($_SESSION['myusername']) ){
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
- 
- <!--It is only for form input of new user-->
+<div class="container">
 
-<center>
-<form action="add_user.php" method="post">
-<br><br><br>
-Username: <input type="text" name="admin_name"><br><br>
-Password: <input type="text" name="admin_pass"><br><br>
-<input type="submit" value="Create">
-</center>
-<!--Developed by: Md Abu Hanife Nayem & Masiur rahman siddiki-->
+  <div class="well well-lg">
+	  <h2 style="text-align:center">Course Evaluation System</h2>
+	  <h4 style="text-align:center">Admin access only</h4>
+
+  </div> 
+
+<div class="col-md-6 col-md-offset-3">
+<form class="form-horizontal" action="add_user.php" method="post">
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="admin_name">Username:</label>
+		<div class="col-sm-8">
+			<input type="text" name="admin_name" class="form-control" placeholder="Enter Username" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="admin_pass">Password: </label>
+		<div class="col-sm-8">
+			<input type="password" name="admin_pass" class="form-control" placeholder="Enter Password" required>
+		</div>
+	</div>
+
+	<div class="form-group"> 
+        <div class="col-sm-offset-2 col-xs-4">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+     </div>
+
 </form>
+
+</div>
+</div>
+
 </body>
 </html>
