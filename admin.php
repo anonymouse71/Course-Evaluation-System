@@ -1,4 +1,6 @@
 <?php
+require 'Carbon.php';
+use Carbon\Carbon;
 session_start();
 if(!isset($_SESSION['myusername']) ){
 	header('location:login.php');
@@ -53,8 +55,9 @@ if(!isset($_SESSION['myusername']) ){
       </div>
   </form>
  </div>
-
-
+<?php 
+printf("Right now is %s", Carbon::now()->toDateTimeString());
+?>
 <br><br>
 
 </div>

@@ -13,12 +13,12 @@ $servername = "localhost";
 $myusername=$_POST['username']; 
 $mypassword=$_POST['password'];
 
-/* To protect MySQL injection (more detail about MySQL injection)
-//$myusername = stripslashes($myusername);
-//$mypassword = stripslashes($mypassword);
-$myusername = mysql_real_escape_string($myusername);
-$mypassword = mysql_real_escape_string($mypassword);
-*/
+// To protect MySQL injection (more detail about MySQL injection)
+$myusername = stripslashes($myusername);
+$mypassword = stripslashes($mypassword);
+//$myusername = mysqli_real_escape_string($myusername);
+//$mypassword = mysqli_real_escape_string($mypassword);
+
 $sql="SELECT * FROM admin WHERE username='$myusername' and password='$mypassword'";
 $result = $conn->query($sql);
 // Mysql_num_row is counting table row
