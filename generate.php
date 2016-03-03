@@ -17,7 +17,7 @@ $link=$_POST['form_link'];
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "sust";
 $dbname = "evaluation";
 /*	
 try {

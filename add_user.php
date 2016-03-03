@@ -6,7 +6,7 @@ $admin_name=$_POST["admin_name"];
 $admin_pass=$_POST["admin_pass"];
 $servername = "localhost";
 $susername = "root";
-$spassword = "";
+$spassword = "sust";
 $dbname = "evaluation";
 
 try {

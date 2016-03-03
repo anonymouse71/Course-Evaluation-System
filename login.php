@@ -14,7 +14,7 @@
 	  <h4 style="text-align:center">Admin login</h4>
 
   </div> 
-<h4 style="text-align:center">Please, provide username & password </h4>
+<h4 style="text-align:center">Please, provide username & password</h4>
 <br><br>
 <div class="col-md-6 col-md-offset-3">
 <form class="form-horizontal" action="checklogin.php" method="post">
