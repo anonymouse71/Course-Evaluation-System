@@ -6,7 +6,8 @@
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<div class="container">
+<br><br>
 <?php 
 
 session_start();
@@ -107,7 +108,7 @@ if ($result->num_rows > 0) {
 
 
 ?>
-
+</div>
 <button onclick="myFunction()">Print this page</button>
 
 <script>
